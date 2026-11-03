@@ -1,0 +1,21 @@
+import os
+from threading import Thread
+from flask import Flask
+import requests
+import time
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is active and running!"
+
+def run():
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+TOKEN = "9214686891:AAFwB8MDYYLNfsnwwkep60ZBT_oPdneB1K0"
